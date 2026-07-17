@@ -1,0 +1,80 @@
+<Window
+    x:Class="MinecraftDoubleClicker.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:MinecraftDoubleClicker.ViewModels"
+    x:DataType="vm:MainViewModel"
+    Title="Minecraft Double Clicker"
+    Width="440"
+    Height="510"
+    MinWidth="440"
+    MinHeight="510"
+    CanResize="False"
+    WindowStartupLocation="CenterScreen">
+
+    <ScrollViewer>
+        <StackPanel Margin="24" Spacing="10">
+            <TextBlock
+                FontSize="24"
+                FontWeight="Bold"
+                Text="Minecraft Double Clicker" />
+
+            <TextBlock
+                Margin="0,0,0,10"
+                Opacity="0.75"
+                Text="Add one click after a quick mouse-button tap"
+                TextWrapping="Wrap" />
+
+            <CheckBox
+                Content="Enabled"
+                IsChecked="{Binding IsEnabled}" />
+
+            <StackPanel Margin="20,0,0,2" Spacing="6">
+                <CheckBox
+                    Content="Double left clicks"
+                    IsChecked="{Binding LeftClickEnabled}" />
+                <CheckBox
+                    Content="Double right clicks"
+                    IsChecked="{Binding RightClickEnabled}" />
+            </StackPanel>
+
+            <TextBlock Margin="0,4,0,0" Text="Tap maximum duration (ms)" />
+            <TextBox Text="{Binding TapMaxDurationMs}" />
+
+            <TextBlock Margin="0,4,0,0" Text="Extra click delay (ms)" />
+            <TextBox Text="{Binding ExtraClickDelayMs}" />
+
+            <CheckBox
+                Margin="0,4,0,0"
+                Content="Only active when Minecraft is focused"
+                IsChecked="{Binding MinecraftOnly}" />
+
+            <TextBlock Margin="0,4,0,0" Text="Toggle hotkey" />
+            <TextBox Text="{Binding HotkeyText}" />
+
+            <StackPanel
+                Margin="0,10,0,0"
+                Orientation="Horizontal"
+                Spacing="10">
+                <Button
+                    Width="96"
+                    Command="{Binding SaveCommand}"
+                    Content="Save" />
+                <Button
+                    Width="96"
+                    Command="{Binding ExitCommand}"
+                    Content="Exit" />
+            </StackPanel>
+
+            <Border
+                Margin="0,10,0,0"
+                Padding="10"
+                Background="{DynamicResource SystemControlBackgroundAltHighBrush}"
+                CornerRadius="4">
+                <TextBlock
+                    Text="{Binding StatusText}"
+                    TextWrapping="Wrap" />
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Window>
